@@ -14,7 +14,7 @@
 
 ## Phase 2 : Moteur d'Outils & Sandbox
 - [x] 11. Implement Unified File Reader with line range and pagination support
-- [ ] 12. Implement Atomic File Writer with automatic directory creation and backups
+- [x] 12. Implement Atomic File Writer with automatic directory creation and backups
 - [ ] 13. Build Unified Diff Patch Engine with fuzzy line matching
 - [ ] 14. Implement Safe Sandboxed Command Runner with process timeout and signal handling
 - [ ] 15. Create Git Operations Tool (stage, commit, revert, branch creation)
