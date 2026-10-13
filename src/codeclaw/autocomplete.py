@@ -1,0 +1,6 @@
+...autocompletion Autocomplete ...
+        class CodeClawAutocomplete(autocomplete.Autocomplete):
+            def __iter__(self)
+                for arg in self.commands
+                    yield arg
+...
