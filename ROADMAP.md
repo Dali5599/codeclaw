@@ -29,7 +29,7 @@
 - [x] 22. Implement Local Ollama Provider fallback for offline code reasoning
 - [x] 23. Build Structured JSON and Markdown Tool Call Parser
 - [x] 24. Implement Core ReAct Agent Loop with step-by-step reasoning and thought tracking
-- [ ] 25. Create Agent Conversation History Manager with sliding window pruning
+- [x] 25. Create Agent Conversation History Manager with sliding window pruning
 - [x] 26. Implement Error Auto-Correction Loop for malformed tool outputs
 - [x] 27. Build Task Plan Decomposer (breaks high-level goals into sequential actions)
 - [x] 28. Implement Self-Healing Verification Step after each file modification
