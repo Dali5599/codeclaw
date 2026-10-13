@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codeclaw"
+version = "0.1.0"
+description = "Autonomous AI Code Generation & Refactoring Agent CLI & Web Engine"
+readme = "README.md"
+authors = [{ name = "Dali5599 & Requin", email = "dali@openclaw.ai" }]
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+    "pydantic>=2.0.0",
+    "fastapi>=0.100.0",
+    "uvicorn>=0.22.0",
+    "httpx>=0.24.0",
+]
+
+[project.scripts]
+codeclaw = "codeclaw.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
