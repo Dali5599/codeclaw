@@ -2,7 +2,7 @@
 
 ## Phase 1 : Architecture Fondamentale & Context Engine
 - [ ] 01. Initialize Core Configuration and environment loader with Pydantic Settings
-- [ ] 02. Build Workspace File Explorer and ignore pattern filter (.gitignore support)
+- [x] 02. Build Workspace File Explorer and ignore pattern filter (.gitignore support)
 - [ ] 03. Implement Python AST Analyzer for extracting function signatures and docstrings
 - [ ] 04. Implement TypeScript/JavaScript Regex Symbol Extractor for classes and exports
 - [ ] 05. Create Workspace Symbol Indexer with fast in-memory dictionary lookup
