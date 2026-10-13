@@ -27,7 +27,7 @@
 ## Phase 3 : Boucle Agentique ReAct & Mémoire Cognitive
 - [x] 21. Implement Multi-Provider LLM Client for Anthropic Claude 3.5 Sonnet
 - [ ] 22. Implement Local Ollama Provider fallback for offline code reasoning
-- [ ] 23. Build Structured JSON and Markdown Tool Call Parser
+- [x] 23. Build Structured JSON and Markdown Tool Call Parser
 - [ ] 24. Implement Core ReAct Agent Loop with step-by-step reasoning and thought tracking
 - [ ] 25. Create Agent Conversation History Manager with sliding window pruning
 - [ ] 26. Implement Error Auto-Correction Loop for malformed tool outputs
