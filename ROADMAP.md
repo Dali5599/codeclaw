@@ -13,7 +13,7 @@
 - [x] 10. Implement Git Repository State Inspector (current branch, dirty files, diffs)
 
 ## Phase 2 : Moteur d'Outils & Sandbox
-- [ ] 11. Implement Unified File Reader with line range and pagination support
+- [x] 11. Implement Unified File Reader with line range and pagination support
 - [ ] 12. Implement Atomic File Writer with automatic directory creation and backups
 - [ ] 13. Build Unified Diff Patch Engine with fuzzy line matching
 - [ ] 14. Implement Safe Sandboxed Command Runner with process timeout and signal handling
