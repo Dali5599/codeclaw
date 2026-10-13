@@ -46,7 +46,7 @@
 - [x] 37. Implement Multi-line Code Input Editor in terminal CLI
 - [x] 38. Create Markdown and Codeblock Streaming Renderer in terminal
 - [x] 39. Implement Audio/Visual Notification Dispatcher upon task completion
-- [ ] 40. Build CLI Benchmark and Diagnostic Command (`codeclaw doctor`)
+- [x] 40. Build CLI Benchmark and Diagnostic Command (`codeclaw doctor`)
 
 ## Phase 5 : Serveur Web, WebSocket & API REST
 - [ ] 41. Implement FastAPI REST Server with health and system metrics endpoints
