@@ -42,7 +42,7 @@
 - [ ] 33. Create Visual Git Diff Viewer with side-by-side or unified colored output
 - [x] 34. Build Single-Prompt Non-Interactive Mode for CI/CD scripting pipelines
 - [ ] 35. Implement Agent Session Save and Resume via serialized JSON state
-- [ ] 36. Create Slash Command System (/diff, /undo, /commit, /model, /clear)
+- [x] 36. Create Slash Command System (/diff, /undo, /commit, /model, /clear)
 - [ ] 37. Implement Multi-line Code Input Editor in terminal CLI
 - [ ] 38. Create Markdown and Codeblock Streaming Renderer in terminal
 - [ ] 39. Implement Audio/Visual Notification Dispatcher upon task completion
