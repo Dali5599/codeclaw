@@ -1,41 +1,57 @@
-import numpy as np
-from scipy.sparse import csr_matrix
-from sklearn.feature_extraction.text import TfidfVectorizer
-from codeclaw.indexer import WorkspaceSymbolIndexer
+import ast
+from pathlib import Path
+import re
+from typing import Dict, List, Tuple
 
-class SemanticCodeSearchProvider:
-    def __init__(self, config: CodeClawConfig) -> None:
-        self.config = config
-        self.vectorizer = TfidfVectorizer(stop_words='english')
+SymbolEntry = Tuple[str, int]
 
-    def build(self) -> csr_matrix:
-        """Build the TF-IDF matrix for keyword extraction."""
-        keywords = self.config.default_model.split(',') if not isinstance(self.config.default_model, str) else [self.config.default_model]
-        vectorizer = self.vectorizer
-        tfidf_matrix = vectorizer.fit_transform(keywords)
-        return tfidf_matrix
-    def search(self, code: str, keywords: list[str]) -> list[tuple[int, int, str]]:
-        """Search for occurrences of *keywords* in the given *code*.\n
-        Returns a list of (line_number, column_offset) tuples where each keyword is found.
-        \n        :param code: The source code to search through.
-        :param keywords: A list of keywords to search for.
-        :return: A list of occurrences of the keywords in the given *code*.
+class WorkspaceSymbolIndexer:
+    """Indexes symbols (functions, classes) from Python source files in a workspace.
+
+    The internal ``_index`` dict provides O(1) lookup by symbol name.
+    """
+
+    def __init__(self) -> None:
+        self._index: Dict[str, List[SymbolEntry]] = {}
+
+    def index_workspace(self, root: str) -> Dict[str, List[SymbolEntry]]:
+        """Walk *root* recursively, parse any *.py file and populate the internal dictionary.
+
+        The dictionary maps symbol names to a list of (file_path, line_number) tuples.
+        Lookup is O(1) via the internal ``_index`` dict.
         """
-        vectorizer = self.vectorizer
-        tfidf_matrix = vectorizer.transform([code])
-        scores = np.dot(tfidf_matrix, tfidf_matrix.T)
-        return self._lookup(scores, keywords)
-    def _lookup(self, scores: csr_matrix, keywords: list[str]) -> list[tuple[int, int, str]]:
-        """Perform a linear search on the *scores* to find occurrences of each keyword.
+        self._index.clear()
+        root_path = Path(root)
+        if not root_path.is_dir():
+            raise ValueError(f"Provided root is not a directory: {root}")
 
-        This is a simple implementation and may not be efficient for large datasets.
-        \n        :param scores: The TF-IDF matrix representing the similarity between keywords and code.
-        :param keywords: A list of keywords to search for.
-        :return: A list of occurrences of each keyword in the given *code*.
-        """
-        occurrences = []
-        for i, keyword in enumerate(keywords):
-            line_number = int(np.argmax(scores[i]))
-            column_offset = np.where(scores[i] == scores[i][line_number])[0][0]
-            occurrences.append((line_number + 1, column_offset + 1, keyword))
-        return occurrences
+        for py_file in root_path.rglob("*.py"):
+            try:
+                text = py_file.read_text(encoding="utf-8")
+                tree = ast.parse(text, filename=str(py_file))
+                self._index_symbols(py_file, tree)
+            except Exception:
+                # Skip files that cannot be parsed (e.g., syntax errors)
+                continue
+        return self._index
+
+    def _index_symbols(self, file_path: Path, tree: ast.AST) -> None:
+        """Extract FunctionDef and ClassDef symbols and add them to the index."""
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                name = node.name
+                lineno = node.lineno
+                self._add_symbol(name, str(file_path), lineno)
+            elif isinstance(node, ast.ClassDef):
+                name = node.name
+                lineno = node.lineno
+                self._add_symbol(name, str(file_path), lineno)
+
+    def _add_symbol(self, name: str, file_path: str, line_no: int) -> None:
+        """Insert a symbol entry into the internal dict (fast O(1))."""
+        entries = self._index.setdefault(name, [])
+        entries.append((file_path, line_no))
+
+    def lookup(self, symbol: str) -> List[SymbolEntry]:
+        """Return all locations where *symbol* is defined, or an empty list."""
+        return self._index.get(symbol, [])

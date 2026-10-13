@@ -18,7 +18,7 @@
 - [ ] 13. Build Unified Diff Patch Engine with fuzzy line matching
 - [x] 14. Implement Safe Sandboxed Command Runner with process timeout and signal handling
 - [ ] 15. Create Git Operations Tool (stage, commit, revert, branch creation)
-- [ ] 16. Implement Code Grep Tool with regex pattern matching and line numbers
+- [x] 16. Implement Code Grep Tool with regex pattern matching and line numbers
 - [ ] 17. Build Automated Test Runner Detector for Pytest, Jest, Cargo, and Go
 - [ ] 18. Implement Directory Tree Visualizer with configurable depth and format
 - [ ] 19. Create Environment Variable Secret Scrubber for logs and outputs
