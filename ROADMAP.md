@@ -1,7 +1,7 @@
 # 🗺️ CodeClaw Roadmap - 50 Étapes d'Achèvement Autonome
 
 ## Phase 1 : Architecture Fondamentale & Context Engine
-- [ ] 01. Initialize Core Configuration and environment loader with Pydantic Settings
+- [x] 01. Initialize Core Configuration and environment loader with Pydantic Settings
 - [x] 02. Build Workspace File Explorer and ignore pattern filter (.gitignore support)
 - [x] 03. Implement Python AST Analyzer for extracting function signatures and docstrings
 - [ ] 04. Implement TypeScript/JavaScript Regex Symbol Extractor for classes and exports
