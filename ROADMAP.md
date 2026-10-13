@@ -9,7 +9,7 @@
 - [ ] 06. Build Context Window Budget Manager for dynamic prompt truncation
 - [ ] 07. Implement Fuzzy File Finder with Levenshtein distance matching
 - [x] 08. Build Semantic Code Search provider using tokenized keyword scoring
-- [ ] 09. Create Project Skeleton Detector (auto-detects Python, Node.js, Go, Rust)
+- [x] 09. Create Project Skeleton Detector (auto-detects Python, Node.js, Go, Rust)
 - [ ] 10. Implement Git Repository State Inspector (current branch, dirty files, diffs)
 
 ## Phase 2 : Moteur d'Outils & Sandbox
