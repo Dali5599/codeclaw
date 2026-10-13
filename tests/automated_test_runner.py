@@ -1,7 +1,6 @@
 import pytest
 import unittest
 import pkg_resources
-import sys
 from codeclaw.cli import app
 from typer.testing import CliRunner
 
@@ -18,4 +17,4 @@ class AutomatedTestRunnerDetector:
         self.go = None
 
     def detect_pytest(self):
-        if not hasattr(sys, 
+        if not hasattr(sys,
